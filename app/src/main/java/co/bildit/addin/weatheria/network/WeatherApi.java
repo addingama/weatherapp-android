@@ -20,7 +20,7 @@ public class WeatherApi {
     public GsonRequest<WeatherForecast> getForecast(String city, Response.Listener successListener, Response.ErrorListener errorListener) {
         try {
             Log.e("Addin", "Called forecast");
-            String url = baseUrl + "/forecast?appid=" + apiKey + "&q=" + URLEncoder.encode(city, StandardCharsets.UTF_8.toString());
+            String url = baseUrl + "/forecast?units=metric&appid=" + apiKey + "&q=" + URLEncoder.encode(city, StandardCharsets.UTF_8.toString());
             GsonRequest gsonRequest = new GsonRequest(url, WeatherForecast.class, null, successListener, errorListener);
 
             return gsonRequest;

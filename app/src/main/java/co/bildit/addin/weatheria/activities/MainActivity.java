@@ -13,6 +13,7 @@ import co.bildit.addin.weatheria.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_CITY = "city";
+    public static final String EXTRA_WEATHER = "weather";
     private ActivityMainBinding binding;
 
     @Override

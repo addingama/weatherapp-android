@@ -35,7 +35,6 @@ public class CityForecastActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        // TODO: get city name from bundle
         String city = getIntent().getExtras().getString(MainActivity.EXTRA_CITY);
 
         ActionBar actionBar = getSupportActionBar();
@@ -45,7 +44,7 @@ public class CityForecastActivity extends AppCompatActivity {
         }
 
         List<ForecastList> tempData = new ArrayList<ForecastList>();
-        adapter = new WeatherAdapter(tempData);
+        adapter = new WeatherAdapter(this, tempData, city);
 
         binding.rvForecast.setAdapter(adapter);
         binding.rvForecast.setLayoutManager(new LinearLayoutManager(this));
@@ -59,7 +58,6 @@ public class CityForecastActivity extends AppCompatActivity {
             public void onResponse(WeatherForecast response) {
                 adapter.setLocalDataSet(response.getList());
                 adapter.notifyDataSetChanged();
-                Log.e("Addin", response.getCity().getName());
             }
         }, new Response.ErrorListener() {
             @Override
