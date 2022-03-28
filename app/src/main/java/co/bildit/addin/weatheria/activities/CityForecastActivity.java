@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -58,11 +59,26 @@ public class CityForecastActivity extends AppCompatActivity {
             public void onResponse(WeatherForecast response) {
                 adapter.setLocalDataSet(response.getList());
                 adapter.notifyDataSetChanged();
+
+                if (response.getList().size() == 0) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(CityForecastActivity.this, "Weather forecast not found", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(CityForecastActivity.this, "Invalid city name", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         }));
     }
