@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Weatheria">
         <activity
+            android:name=".activities.ForecastDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CityForecastActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
