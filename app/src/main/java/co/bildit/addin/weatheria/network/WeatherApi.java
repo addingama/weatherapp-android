@@ -17,21 +17,11 @@ public class WeatherApi {
     private static String apiKey = "65d00499677e59496ca2f318eb68c049";
     private static String baseUrl = "https://api.openweathermap.org/data/2.5";
 
-    public GsonRequest<WeatherForecast> getForecast(String city) {
+    public GsonRequest<WeatherForecast> getForecast(String city, Response.Listener successListener, Response.ErrorListener errorListener) {
         try {
             Log.e("Addin", "Called forecast");
             String url = baseUrl + "/forecast?appid=" + apiKey + "&q=" + URLEncoder.encode(city, StandardCharsets.UTF_8.toString());
-            GsonRequest gsonRequest = new GsonRequest(url, WeatherForecast.class, null, new Response.Listener() {
-                @Override
-                public void onResponse(Object response) {
-                    Log.i("Addin", response.toString());
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-Log.e("Addin", error.getLocalizedMessage());
-                }
-            });
+            GsonRequest gsonRequest = new GsonRequest(url, WeatherForecast.class, null, successListener, errorListener);
 
             return gsonRequest;
         } catch (UnsupportedEncodingException e) {

@@ -4,6 +4,8 @@ package co.bildit.addin.weatheria.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 
 public class WeatherForecast {
 
@@ -18,7 +20,7 @@ private Integer message;
 private Integer cnt;
 @SerializedName("list")
 @Expose
-private java.util.List<co.bildit.addin.weatheria.model.List> list = null;
+private List<ForecastList> forecastList = null;
 @SerializedName("city")
 @Expose
 private City city;
@@ -47,12 +49,12 @@ public void setCnt(Integer cnt) {
 this.cnt = cnt;
 }
 
-public java.util.List<co.bildit.addin.weatheria.model.List> getList() {
-return list;
+public List<ForecastList> getList() {
+return forecastList;
 }
 
-public void setList(java.util.List<co.bildit.addin.weatheria.model.List> list) {
-this.list = list;
+public void setList(List<ForecastList> forecastList) {
+this.forecastList = forecastList;
 }
 
 public City getCity() {
