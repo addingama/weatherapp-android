@@ -11,6 +11,8 @@ import android.view.View;
 import co.bildit.addin.weatheria.R;
 import co.bildit.addin.weatheria.databinding.ActivityCityForecastBinding;
 import co.bildit.addin.weatheria.databinding.ActivityMainBinding;
+import co.bildit.addin.weatheria.network.NetworkSingleton;
+import co.bildit.addin.weatheria.network.WeatherApi;
 
 public class CityForecastActivity extends AppCompatActivity {
 
@@ -30,7 +32,10 @@ public class CityForecastActivity extends AppCompatActivity {
 
         // TODO: get city name from bundle
         String city = getIntent().getExtras().getString(MainActivity.EXTRA_CITY);
+        NetworkSingleton networkSingleton = NetworkSingleton.getInstance(this);
+        WeatherApi api = new WeatherApi();
 
+        networkSingleton.addToRequestQueue(api.getForecast(city));
     }
 
     @Override
