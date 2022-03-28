@@ -1,8 +1,10 @@
-package co.bildit.addin.weatheria;
+package co.bildit.addin.weatheria.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import co.bildit.addin.weatheria.R;
 
 public class MainActivity extends AppCompatActivity {
 
